@@ -1,0 +1,14 @@
+type Coffee {
+  id: String!
+  name: String!
+  description: String!
+  characteristics: [String!]!
+  coffeeAPIOrigin: String!
+  thirdPartyCoffeeOrigin: String
+  orders: [Order!]!
+}
+
+type Query {
+  coffee(id: String!): Coffee!
+  coffees: [Coffee!]!
+}

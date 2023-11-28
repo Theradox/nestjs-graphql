@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum CoffeeAPIOrigin {
+  INTERNAL
+  EXTERNAL
+}
+
+model Coffee {
+  id                     String          @id() @default(uuid())
+  name                   String
+  description            String
+  characteristics        String[]
+  coffeeAPIOrigin        CoffeeAPIOrigin
+  thirdPartyCoffeeOrigin String?
+  orders                 Order[]
+
+  @@unique([id, thirdPartyCoffeeOrigin])
+}
+
+model Ingredient {
+  id          String  @id() @default(uuid())
+  name        String
+  description String
+  orders      Order[]
+}
+
+model Order {
+  id          String       @id() @default(uuid())
+  ingredients Ingredient[]
+  coffees     Coffee[]
+}

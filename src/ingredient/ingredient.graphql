@@ -1,0 +1,11 @@
+type Ingredient {
+  id: String!
+  name: String!
+  description: String!
+  orders: [Order!]!
+}
+
+type Query {
+  ingredients: [Ingredient!]!
+  ingredient(id: String!): Ingredient!
+}

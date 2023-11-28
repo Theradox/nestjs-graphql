@@ -1,0 +1,19 @@
+type Order {
+  id: String!
+  ingredients: [Ingredient!]!
+  coffees: [Coffee!]!
+}
+
+input CreateOrderInput {
+  ingredientIds: [String!]!
+  coffeeIds: [String!]!
+}
+
+type Query {
+  orders: [Order]!
+  order(id: String!): Order
+}
+
+type Mutation {
+  orderCoffee(createOrderInput: CreateOrderInput!): Order
+}
