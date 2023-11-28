@@ -1,6 +1,7 @@
 # Setting up the project
 
 - `npm install`
+- `npm run prepare`
 
 ## Setting up docker compose db
 - `docker compose up -d`
